@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Ord.
+    -->
+    <changeSet id="20170617133933-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="serv_id"
+                                 baseTableName="ord"
+                                 constraintName="fk_ord_serv_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="serv"/>
+
+        <addForeignKeyConstraint baseColumnNames="agent_id"
+                                 baseTableName="ord"
+                                 constraintName="fk_ord_agent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agent"/>
+
+        <addForeignKeyConstraint baseColumnNames="service_provider_id"
+                                 baseTableName="ord"
+                                 constraintName="fk_ord_service_provider_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="service_provider"/>
+
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="ord"
+                                 constraintName="fk_ord_customer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,23 @@
+
+<div>
+    <h2><span data-translate="vivisysApp.problemOrder.detail.title">Problem Order</span> {{vm.problemOrder.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="vivisysApp.problemOrder.problem">Problem</span></dt>
+        <dd>
+            <a ui-sref="problem-vivi-detail({id:vm.problemOrder.problemId})">{{vm.problemOrder.problemName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="problem-order-vivi-detail.edit({id:vm.problemOrder.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,109 @@
+entity Product{
+	name String required,
+    description String,
+    type String,
+    status String
+}
+entity Serv{
+	name String required,
+    descriptin String,
+    price Double required,
+    unit String required,
+    type String,
+    status String
+}
+entity ServiceProvider{
+	name String required,
+    description String,
+    type String,
+    status String
+}
+entity Resource{
+	name String required,
+    description String,
+    cost String required,
+    unit String required,
+    type String,
+    status String
+}
+entity Agent{
+	name String required,
+    description String,
+    type String,
+    status String
+}
+entity Customer{
+	name String required,
+    description String,
+    type String,
+    status String
+}
+entity Ord{
+	name String required,
+    quantity Double required,
+    price Double required,
+    createdTime ZonedDateTime,
+    effictiveTime ZonedDateTime,
+    expriedTime ZonedDateTime,
+    type String,
+    status String
+}
+entity ResourceDeploy{
+	name String required,
+    quantity Double required,
+    price Double required,
+    createdTime ZonedDateTime,
+    effictiveTime ZonedDateTime,
+    expriedTime ZonedDateTime,
+    type String,
+    status String
+}
+entity SpDeploy{
+	name String required,
+    quantity Double required,
+    price Double required,
+    createdTime ZonedDateTime,
+    effictiveTime ZonedDateTime,
+    expriedTime ZonedDateTime,
+    type String,
+    status String
+}
+entity CustomerIncome{}
+entity AgentCost{}
+entity ResourceCost{}
+entity SpCost{}
+entity Problem{}
+entity ProblemOrder{}
+
+relationship ManyToOne{
+	Serv{product(name)} to Product,
+    Ord{serv(name)} to Serv,
+    Ord{agent(name)} to Agent,
+    Ord{serviceProvider(name)} to ServiceProvider,
+    Ord{customer(name)} to Customer,
+    ResourceDeploy{resource(name)} to Resource,
+    SpDeploy{serviceProvider(name)} to ServiceProvider,
+    Problem{customer(name)} to Customer,
+    Problem{ord(name)} to Ord
+}
+
+relationship ManyToMany{
+	Serv{serviceProvider(name)} to ServiceProvider{serv(name)},
+    Serv{agent(name)} to Agent{serv(name)}
+}
+relationship OneToMany{
+    Serv{resource(name)} to Resource{serv(name)},
+    Ord{resourceDeploy(name)} to ResourceDeploy{ord(name)},
+    Ord{spDeploy(name)} to SpDeploy{ord(name)},
+    Problem{problemOrder(name)} to ProblemOrder{problem(name)}
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+angularSuffix * with Vivi

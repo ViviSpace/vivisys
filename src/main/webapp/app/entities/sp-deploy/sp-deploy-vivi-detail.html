@@ -1,0 +1,59 @@
+
+<div>
+    <h2><span data-translate="vivisysApp.spDeploy.detail.title">Sp Deploy</span> {{vm.spDeploy.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="vivisysApp.spDeploy.name">Name</span></dt>
+        <dd>
+            <span>{{vm.spDeploy.name}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.spDeploy.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{vm.spDeploy.quantity}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.spDeploy.price">Price</span></dt>
+        <dd>
+            <span>{{vm.spDeploy.price}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.spDeploy.createdTime">Created Time</span></dt>
+        <dd>
+            <span>{{vm.spDeploy.createdTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.spDeploy.effictiveTime">Effictive Time</span></dt>
+        <dd>
+            <span>{{vm.spDeploy.effictiveTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.spDeploy.expriedTime">Expried Time</span></dt>
+        <dd>
+            <span>{{vm.spDeploy.expriedTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.spDeploy.type">Type</span></dt>
+        <dd>
+            <span>{{vm.spDeploy.type}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.spDeploy.status">Status</span></dt>
+        <dd>
+            <span>{{vm.spDeploy.status}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.spDeploy.serviceProvider">Service Provider</span></dt>
+        <dd>
+            <a ui-sref="service-provider-vivi-detail({id:vm.spDeploy.serviceProviderId})">{{vm.spDeploy.serviceProviderName}}</a>
+        </dd>
+        <dt><span data-translate="vivisysApp.spDeploy.ord">Ord</span></dt>
+        <dd>
+            <a ui-sref="ord-vivi-detail({id:vm.spDeploy.ordId})">{{vm.spDeploy.ordName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="sp-deploy-vivi-detail.edit({id:vm.spDeploy.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

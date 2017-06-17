@@ -1,0 +1,22 @@
+{
+    "vivisysApp": {
+        "problemOrder" : {
+            "home": {
+                "title": "Problem Orders",
+                "createLabel": "Create a new Problem Order",
+                "createOrEditLabel": "Create or edit a Problem Order",
+                "search": "Search for Problem Order"
+            },
+            "created": "A new Problem Order is created with identifier {{ param }}",
+            "updated": "A Problem Order is updated with identifier {{ param }}",
+            "deleted": "A Problem Order is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Problem Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Problem Order"
+            },
+            "problem": "Problem"
+        }
+    }
+}

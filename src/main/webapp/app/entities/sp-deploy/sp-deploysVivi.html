@@ -1,0 +1,95 @@
+<div>
+    <h2 data-translate="vivisysApp.spDeploy.home.title">Sp Deploys</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="sp-deploy-vivi.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down"  data-translate="vivisysApp.spDeploy.home.createLabel">
+                        Create new Sp Deploy
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'vivisysApp.spDeploy.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="vivisysApp.spDeploy.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="quantity"><span data-translate="vivisysApp.spDeploy.quantity">Quantity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="price"><span data-translate="vivisysApp.spDeploy.price">Price</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdTime"><span data-translate="vivisysApp.spDeploy.createdTime">Created Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="effictiveTime"><span data-translate="vivisysApp.spDeploy.effictiveTime">Effictive Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="expriedTime"><span data-translate="vivisysApp.spDeploy.expriedTime">Expried Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type"><span data-translate="vivisysApp.spDeploy.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span data-translate="vivisysApp.spDeploy.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="serviceProviderName"><span data-translate="vivisysApp.spDeploy.serviceProvider">Service Provider</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ordName"><span data-translate="vivisysApp.spDeploy.ord">Ord</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="spDeploy in vm.spDeploys track by spDeploy.id">
+                    <td><a ui-sref="sp-deploy-vivi-detail({id:spDeploy.id})">{{spDeploy.id}}</a></td>
+                    <td>{{spDeploy.name}}</td>
+                    <td>{{spDeploy.quantity}}</td>
+                    <td>{{spDeploy.price}}</td>
+                    <td>{{spDeploy.createdTime | date:'medium'}}</td>
+                    <td>{{spDeploy.effictiveTime | date:'medium'}}</td>
+                    <td>{{spDeploy.expriedTime | date:'medium'}}</td>
+                    <td>{{spDeploy.type}}</td>
+                    <td>{{spDeploy.status}}</td>
+                    <td>
+                        <a ui-sref="service-provider-vivi-detail({id:spDeploy.serviceProviderId})">{{spDeploy.serviceProviderName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="ord-vivi-detail({id:spDeploy.ordId})">{{spDeploy.ordName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="sp-deploy-vivi-detail({id:spDeploy.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="sp-deploy-vivi.edit({id:spDeploy.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="sp-deploy-vivi.delete({id:spDeploy.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

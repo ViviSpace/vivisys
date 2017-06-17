@@ -1,0 +1,95 @@
+<div>
+    <h2 data-translate="vivisysApp.resourceDeploy.home.title">Resource Deploys</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="resource-deploy-vivi.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down"  data-translate="vivisysApp.resourceDeploy.home.createLabel">
+                        Create new Resource Deploy
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'vivisysApp.resourceDeploy.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="vivisysApp.resourceDeploy.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="quantity"><span data-translate="vivisysApp.resourceDeploy.quantity">Quantity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="price"><span data-translate="vivisysApp.resourceDeploy.price">Price</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdTime"><span data-translate="vivisysApp.resourceDeploy.createdTime">Created Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="effictiveTime"><span data-translate="vivisysApp.resourceDeploy.effictiveTime">Effictive Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="expriedTime"><span data-translate="vivisysApp.resourceDeploy.expriedTime">Expried Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type"><span data-translate="vivisysApp.resourceDeploy.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span data-translate="vivisysApp.resourceDeploy.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="resourceName"><span data-translate="vivisysApp.resourceDeploy.resource">Resource</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ordName"><span data-translate="vivisysApp.resourceDeploy.ord">Ord</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="resourceDeploy in vm.resourceDeploys track by resourceDeploy.id">
+                    <td><a ui-sref="resource-deploy-vivi-detail({id:resourceDeploy.id})">{{resourceDeploy.id}}</a></td>
+                    <td>{{resourceDeploy.name}}</td>
+                    <td>{{resourceDeploy.quantity}}</td>
+                    <td>{{resourceDeploy.price}}</td>
+                    <td>{{resourceDeploy.createdTime | date:'medium'}}</td>
+                    <td>{{resourceDeploy.effictiveTime | date:'medium'}}</td>
+                    <td>{{resourceDeploy.expriedTime | date:'medium'}}</td>
+                    <td>{{resourceDeploy.type}}</td>
+                    <td>{{resourceDeploy.status}}</td>
+                    <td>
+                        <a ui-sref="resource-vivi-detail({id:resourceDeploy.resourceId})">{{resourceDeploy.resourceName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="ord-vivi-detail({id:resourceDeploy.ordId})">{{resourceDeploy.ordName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="resource-deploy-vivi-detail({id:resourceDeploy.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="resource-deploy-vivi.edit({id:resourceDeploy.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="resource-deploy-vivi.delete({id:resourceDeploy.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

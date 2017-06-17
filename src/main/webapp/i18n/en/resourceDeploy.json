@@ -1,0 +1,31 @@
+{
+    "vivisysApp": {
+        "resourceDeploy" : {
+            "home": {
+                "title": "Resource Deploys",
+                "createLabel": "Create a new Resource Deploy",
+                "createOrEditLabel": "Create or edit a Resource Deploy",
+                "search": "Search for Resource Deploy"
+            },
+            "created": "A new Resource Deploy is created with identifier {{ param }}",
+            "updated": "A Resource Deploy is updated with identifier {{ param }}",
+            "deleted": "A Resource Deploy is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Resource Deploy {{ id }}?"
+            },
+            "detail": {
+                "title": "Resource Deploy"
+            },
+            "name": "Name",
+            "quantity": "Quantity",
+            "price": "Price",
+            "createdTime": "Created Time",
+            "effictiveTime": "Effictive Time",
+            "expriedTime": "Expried Time",
+            "type": "Type",
+            "status": "Status",
+            "resource": "Resource",
+            "ord": "Ord"
+        }
+    }
+}

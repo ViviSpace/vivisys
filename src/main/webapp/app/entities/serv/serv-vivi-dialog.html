@@ -1,0 +1,98 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myServLabel" data-translate="vivisysApp.serv.home.createOrEditLabel">Create or edit a Serv</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.serv.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.serv.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.serv.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.serv.name"
+                    required/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.serv.descriptin" for="field_descriptin">Descriptin</label>
+            <input type="text" class="form-control" name="descriptin" id="field_descriptin"
+                    ng-model="vm.serv.descriptin"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.serv.price" for="field_price">Price</label>
+            <input type="number" class="form-control" name="price" id="field_price"
+                    ng-model="vm.serv.price"
+                    required/>
+            <div ng-show="editForm.price.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.price.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.price.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.serv.unit" for="field_unit">Unit</label>
+            <input type="text" class="form-control" name="unit" id="field_unit"
+                    ng-model="vm.serv.unit"
+                    required/>
+            <div ng-show="editForm.unit.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.unit.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.serv.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                    ng-model="vm.serv.type"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.serv.status" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                    ng-model="vm.serv.status"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="vivisysApp.serv.product" for="field_product">Product</label>
+            <select class="form-control" id="field_product" name="product" ng-model="vm.serv.productId" ng-options="product.id as product.name for product in vm.products"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="vivisysApp.serv.serviceProvider" for="field_serviceProvider">Service Provider</label>
+            <select class="form-control" id="field_serviceProvider" multiple name="serviceProvider" ng-model="vm.serv.serviceProviders" ng-options="serviceProvider as serviceProvider.name for serviceProvider in vm.serviceproviders track by serviceProvider.id"></select>
+        </div>
+        <div class="form-group">
+            <label data-translate="vivisysApp.serv.agent" for="field_agent">Agent</label>
+            <select class="form-control" id="field_agent" multiple name="agent" ng-model="vm.serv.agents" ng-options="agent as agent.name for agent in vm.agents track by agent.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

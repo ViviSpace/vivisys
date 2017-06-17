@@ -1,0 +1,86 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myResourceLabel" data-translate="vivisysApp.resource.home.createOrEditLabel">Create or edit a Resource</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.resource.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.resource.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.resource.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.resource.name"
+                    required/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.resource.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.resource.description"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.resource.cost" for="field_cost">Cost</label>
+            <input type="text" class="form-control" name="cost" id="field_cost"
+                    ng-model="vm.resource.cost"
+                    required/>
+            <div ng-show="editForm.cost.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cost.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.resource.unit" for="field_unit">Unit</label>
+            <input type="text" class="form-control" name="unit" id="field_unit"
+                    ng-model="vm.resource.unit"
+                    required/>
+            <div ng-show="editForm.unit.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.unit.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.resource.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                    ng-model="vm.resource.type"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.resource.status" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                    ng-model="vm.resource.status"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="vivisysApp.resource.serv" for="field_serv">Serv</label>
+            <select class="form-control" id="field_serv" name="serv" ng-model="vm.resource.servId" ng-options="serv.id as serv.name for serv in vm.servs"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

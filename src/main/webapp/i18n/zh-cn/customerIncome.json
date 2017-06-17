@@ -1,0 +1,21 @@
+{
+    "vivisysApp": {
+        "customerIncome" : {
+            "home": {
+                "title": "Customer Incomes",
+                "createLabel": "Create a new Customer Income",
+                "createOrEditLabel": "Create or edit a Customer Income",
+                "search": "Search for Customer Income"
+            },
+            "created": "A new Customer Income is created with identifier {{ param }}",
+            "updated": "A Customer Income is updated with identifier {{ param }}",
+            "deleted": "A Customer Income is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Customer Income {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer Income"
+            }
+        }
+    }
+}

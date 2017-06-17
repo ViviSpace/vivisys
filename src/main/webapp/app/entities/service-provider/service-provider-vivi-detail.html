@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="vivisysApp.serviceProvider.detail.title">Service Provider</span> {{vm.serviceProvider.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="vivisysApp.serviceProvider.name">Name</span></dt>
+        <dd>
+            <span>{{vm.serviceProvider.name}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.serviceProvider.description">Description</span></dt>
+        <dd>
+            <span>{{vm.serviceProvider.description}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.serviceProvider.type">Type</span></dt>
+        <dd>
+            <span>{{vm.serviceProvider.type}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.serviceProvider.status">Status</span></dt>
+        <dd>
+            <span>{{vm.serviceProvider.status}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="service-provider-vivi-detail.edit({id:vm.serviceProvider.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

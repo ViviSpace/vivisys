@@ -1,0 +1,67 @@
+
+<div>
+    <h2><span data-translate="vivisysApp.ord.detail.title">Ord</span> {{vm.ord.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="vivisysApp.ord.name">Name</span></dt>
+        <dd>
+            <span>{{vm.ord.name}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{vm.ord.quantity}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.price">Price</span></dt>
+        <dd>
+            <span>{{vm.ord.price}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.createdTime">Created Time</span></dt>
+        <dd>
+            <span>{{vm.ord.createdTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.effictiveTime">Effictive Time</span></dt>
+        <dd>
+            <span>{{vm.ord.effictiveTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.expriedTime">Expried Time</span></dt>
+        <dd>
+            <span>{{vm.ord.expriedTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.type">Type</span></dt>
+        <dd>
+            <span>{{vm.ord.type}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.status">Status</span></dt>
+        <dd>
+            <span>{{vm.ord.status}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.serv">Serv</span></dt>
+        <dd>
+            <a ui-sref="serv-vivi-detail({id:vm.ord.servId})">{{vm.ord.servName}}</a>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.agent">Agent</span></dt>
+        <dd>
+            <a ui-sref="agent-vivi-detail({id:vm.ord.agentId})">{{vm.ord.agentName}}</a>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.serviceProvider">Service Provider</span></dt>
+        <dd>
+            <a ui-sref="service-provider-vivi-detail({id:vm.ord.serviceProviderId})">{{vm.ord.serviceProviderName}}</a>
+        </dd>
+        <dt><span data-translate="vivisysApp.ord.customer">Customer</span></dt>
+        <dd>
+            <a ui-sref="customer-vivi-detail({id:vm.ord.customerId})">{{vm.ord.customerName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="ord-vivi-detail.edit({id:vm.ord.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

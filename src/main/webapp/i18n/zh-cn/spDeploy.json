@@ -1,0 +1,31 @@
+{
+    "vivisysApp": {
+        "spDeploy" : {
+            "home": {
+                "title": "Sp Deploys",
+                "createLabel": "Create a new Sp Deploy",
+                "createOrEditLabel": "Create or edit a Sp Deploy",
+                "search": "Search for Sp Deploy"
+            },
+            "created": "A new Sp Deploy is created with identifier {{ param }}",
+            "updated": "A Sp Deploy is updated with identifier {{ param }}",
+            "deleted": "A Sp Deploy is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Sp Deploy {{ id }}?"
+            },
+            "detail": {
+                "title": "Sp Deploy"
+            },
+            "name": "Name",
+            "quantity": "Quantity",
+            "price": "Price",
+            "createdTime": "Created Time",
+            "effictiveTime": "Effictive Time",
+            "expriedTime": "Expried Time",
+            "type": "Type",
+            "status": "Status",
+            "serviceProvider": "Service Provider",
+            "ord": "Ord"
+        }
+    }
+}

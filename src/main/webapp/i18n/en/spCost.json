@@ -1,0 +1,21 @@
+{
+    "vivisysApp": {
+        "spCost" : {
+            "home": {
+                "title": "Sp Costs",
+                "createLabel": "Create a new Sp Cost",
+                "createOrEditLabel": "Create or edit a Sp Cost",
+                "search": "Search for Sp Cost"
+            },
+            "created": "A new Sp Cost is created with identifier {{ param }}",
+            "updated": "A Sp Cost is updated with identifier {{ param }}",
+            "deleted": "A Sp Cost is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Sp Cost {{ id }}?"
+            },
+            "detail": {
+                "title": "Sp Cost"
+            }
+        }
+    }
+}

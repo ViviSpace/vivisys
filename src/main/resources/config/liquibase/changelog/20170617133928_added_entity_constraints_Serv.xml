@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Serv.
+    -->
+    <changeSet id="20170617133928-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="serv"
+                                 constraintName="fk_serv_product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+
+        <addForeignKeyConstraint baseColumnNames="servs_id"
+                                 baseTableName="serv_service_provider"
+                                 constraintName="fk_serv_service_provider_servs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="serv"/>
+        <addForeignKeyConstraint baseColumnNames="service_providers_id"
+                                 baseTableName="serv_service_provider"
+                                 constraintName="fk_serv_service_provider_service_providers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="service_provider"/>
+        
+        <addForeignKeyConstraint baseColumnNames="servs_id"
+                                 baseTableName="serv_agent"
+                                 constraintName="fk_serv_agent_servs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="serv"/>
+        <addForeignKeyConstraint baseColumnNames="agents_id"
+                                 baseTableName="serv_agent"
+                                 constraintName="fk_serv_agent_agents_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agent"/>
+        
+    </changeSet>
+</databaseChangeLog>

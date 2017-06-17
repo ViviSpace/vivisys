@@ -1,0 +1,59 @@
+
+<div>
+    <h2><span data-translate="vivisysApp.serv.detail.title">Serv</span> {{vm.serv.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="vivisysApp.serv.name">Name</span></dt>
+        <dd>
+            <span>{{vm.serv.name}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.serv.descriptin">Descriptin</span></dt>
+        <dd>
+            <span>{{vm.serv.descriptin}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.serv.price">Price</span></dt>
+        <dd>
+            <span>{{vm.serv.price}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.serv.unit">Unit</span></dt>
+        <dd>
+            <span>{{vm.serv.unit}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.serv.type">Type</span></dt>
+        <dd>
+            <span>{{vm.serv.type}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.serv.status">Status</span></dt>
+        <dd>
+            <span>{{vm.serv.status}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.serv.product">Product</span></dt>
+        <dd>
+            <a ui-sref="product-vivi-detail({id:vm.serv.productId})">{{vm.serv.productName}}</a>
+        </dd>
+        <dt><span data-translate="vivisysApp.serv.serviceProvider">Service Provider</span></dt>
+        <dd>
+            <span ng-repeat="serviceProvider in vm.serv.serviceProviders">
+                <a ui-sref="service-provider-vivi-detail({id: serviceProvider.id})">{{serviceProvider.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span data-translate="vivisysApp.serv.agent">Agent</span></dt>
+        <dd>
+            <span ng-repeat="agent in vm.serv.agents">
+                <a ui-sref="agent-vivi-detail({id: agent.id})">{{agent.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="serv-vivi-detail.edit({id:vm.serv.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

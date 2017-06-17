@@ -1,0 +1,21 @@
+{
+    "vivisysApp": {
+        "resourceCost" : {
+            "home": {
+                "title": "Resource Costs",
+                "createLabel": "Create a new Resource Cost",
+                "createOrEditLabel": "Create or edit a Resource Cost",
+                "search": "Search for Resource Cost"
+            },
+            "created": "A new Resource Cost is created with identifier {{ param }}",
+            "updated": "A Resource Cost is updated with identifier {{ param }}",
+            "deleted": "A Resource Cost is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Resource Cost {{ id }}?"
+            },
+            "detail": {
+                "title": "Resource Cost"
+            }
+        }
+    }
+}

@@ -40,6 +40,29 @@ public class CacheConfiguration {
             cm.createCache(com.vivi.vivisys.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.vivi.vivisys.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.vivi.vivisys.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Product.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Serv.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Serv.class.getName() + ".resources", jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Serv.class.getName() + ".serviceProviders", jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Serv.class.getName() + ".agents", jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.ServiceProvider.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.ServiceProvider.class.getName() + ".servs", jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Resource.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Agent.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Agent.class.getName() + ".servs", jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Customer.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Ord.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Ord.class.getName() + ".resourceDeploys", jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Ord.class.getName() + ".spDeploys", jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.ResourceDeploy.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.SpDeploy.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.CustomerIncome.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.AgentCost.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.ResourceCost.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.SpCost.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Problem.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.Problem.class.getName() + ".problemOrders", jcacheConfiguration);
+            cm.createCache(com.vivi.vivisys.domain.ProblemOrder.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

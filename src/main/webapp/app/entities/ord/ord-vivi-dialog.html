@@ -1,0 +1,136 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOrdLabel" data-translate="vivisysApp.ord.home.createOrEditLabel">Create or edit a Ord</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.ord.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.ord.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.ord.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.ord.name"
+                    required/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.ord.quantity" for="field_quantity">Quantity</label>
+            <input type="number" class="form-control" name="quantity" id="field_quantity"
+                    ng-model="vm.ord.quantity"
+                    required/>
+            <div ng-show="editForm.quantity.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.quantity.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.quantity.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.ord.price" for="field_price">Price</label>
+            <input type="number" class="form-control" name="price" id="field_price"
+                    ng-model="vm.ord.price"
+                    required/>
+            <div ng-show="editForm.price.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.price.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.price.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.ord.createdTime" for="field_createdTime">Created Time</label>
+                <div class="input-group">
+                    <input id="field_createdTime" type="text" class="form-control" name="createdTime" datetime-picker="{{dateformat}}" ng-model="vm.ord.createdTime" is-open="vm.datePickerOpenStatus.createdTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.ord.effictiveTime" for="field_effictiveTime">Effictive Time</label>
+                <div class="input-group">
+                    <input id="field_effictiveTime" type="text" class="form-control" name="effictiveTime" datetime-picker="{{dateformat}}" ng-model="vm.ord.effictiveTime" is-open="vm.datePickerOpenStatus.effictiveTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('effictiveTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.ord.expriedTime" for="field_expriedTime">Expried Time</label>
+                <div class="input-group">
+                    <input id="field_expriedTime" type="text" class="form-control" name="expriedTime" datetime-picker="{{dateformat}}" ng-model="vm.ord.expriedTime" is-open="vm.datePickerOpenStatus.expriedTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('expriedTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.ord.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                    ng-model="vm.ord.type"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="vivisysApp.ord.status" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                    ng-model="vm.ord.status"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="vivisysApp.ord.serv" for="field_serv">Serv</label>
+            <select class="form-control" id="field_serv" name="serv" ng-model="vm.ord.servId" ng-options="serv.id as serv.name for serv in vm.servs"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="vivisysApp.ord.agent" for="field_agent">Agent</label>
+            <select class="form-control" id="field_agent" name="agent" ng-model="vm.ord.agentId" ng-options="agent.id as agent.name for agent in vm.agents"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="vivisysApp.ord.serviceProvider" for="field_serviceProvider">Service Provider</label>
+            <select class="form-control" id="field_serviceProvider" name="serviceProvider" ng-model="vm.ord.serviceProviderId" ng-options="serviceProvider.id as serviceProvider.name for serviceProvider in vm.serviceproviders"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="vivisysApp.ord.customer" for="field_customer">Customer</label>
+            <select class="form-control" id="field_customer" name="customer" ng-model="vm.ord.customerId" ng-options="customer.id as customer.name for customer in vm.customers"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+{
+    "vivisysApp": {
+        "agentCost" : {
+            "home": {
+                "title": "Agent Costs",
+                "createLabel": "Create a new Agent Cost",
+                "createOrEditLabel": "Create or edit a Agent Cost",
+                "search": "Search for Agent Cost"
+            },
+            "created": "A new Agent Cost is created with identifier {{ param }}",
+            "updated": "A Agent Cost is updated with identifier {{ param }}",
+            "deleted": "A Agent Cost is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Agent Cost {{ id }}?"
+            },
+            "detail": {
+                "title": "Agent Cost"
+            }
+        }
+    }
+}

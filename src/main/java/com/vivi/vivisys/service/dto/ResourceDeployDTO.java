@@ -1,0 +1,184 @@
+package com.vivi.vivisys.service.dto;
+
+
+import java.time.ZonedDateTime;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
+
+/**
+ * A DTO for the ResourceDeploy entity.
+ */
+public class ResourceDeployDTO implements Serializable {
+
+    private Long id;
+
+    @NotNull
+    private String name;
+
+    @NotNull
+    private Double quantity;
+
+    @NotNull
+    private Double price;
+
+    private ZonedDateTime createdTime;
+
+    private ZonedDateTime effictiveTime;
+
+    private ZonedDateTime expriedTime;
+
+    private String type;
+
+    private String status;
+
+    private Long resourceId;
+
+    private String resourceName;
+
+    private Long ordId;
+
+    private String ordName;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public ZonedDateTime getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(ZonedDateTime createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public ZonedDateTime getEffictiveTime() {
+        return effictiveTime;
+    }
+
+    public void setEffictiveTime(ZonedDateTime effictiveTime) {
+        this.effictiveTime = effictiveTime;
+    }
+
+    public ZonedDateTime getExpriedTime() {
+        return expriedTime;
+    }
+
+    public void setExpriedTime(ZonedDateTime expriedTime) {
+        this.expriedTime = expriedTime;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Long getResourceId() {
+        return resourceId;
+    }
+
+    public void setResourceId(Long resourceId) {
+        this.resourceId = resourceId;
+    }
+
+    public String getResourceName() {
+        return resourceName;
+    }
+
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
+
+    public Long getOrdId() {
+        return ordId;
+    }
+
+    public void setOrdId(Long ordId) {
+        this.ordId = ordId;
+    }
+
+    public String getOrdName() {
+        return ordName;
+    }
+
+    public void setOrdName(String ordName) {
+        this.ordName = ordName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        ResourceDeployDTO resourceDeployDTO = (ResourceDeployDTO) o;
+        if(resourceDeployDTO.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), resourceDeployDTO.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "ResourceDeployDTO{" +
+            "id=" + getId() +
+            ", name='" + getName() + "'" +
+            ", quantity='" + getQuantity() + "'" +
+            ", price='" + getPrice() + "'" +
+            ", createdTime='" + getCreatedTime() + "'" +
+            ", effictiveTime='" + getEffictiveTime() + "'" +
+            ", expriedTime='" + getExpriedTime() + "'" +
+            ", type='" + getType() + "'" +
+            ", status='" + getStatus() + "'" +
+            "}";
+    }
+}

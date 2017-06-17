@@ -7,6 +7,21 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "productVivi": "Product",
+                "servVivi": "Serv",
+                "serviceProviderVivi": "Service Provider",
+                "resourceVivi": "Resource",
+                "agentVivi": "Agent",
+                "customerVivi": "Customer",
+                "ordVivi": "Ord",
+                "resourceDeployVivi": "Resource Deploy",
+                "spDeployVivi": "Sp Deploy",
+                "customerIncomeVivi": "Customer Income",
+                "agentCostVivi": "Agent Cost",
+                "resourceCostVivi": "Resource Cost",
+                "spCostVivi": "Sp Cost",
+                "problemVivi": "Problem",
+                "problemOrderVivi": "Problem Order",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

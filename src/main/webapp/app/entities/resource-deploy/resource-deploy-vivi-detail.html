@@ -1,0 +1,59 @@
+
+<div>
+    <h2><span data-translate="vivisysApp.resourceDeploy.detail.title">Resource Deploy</span> {{vm.resourceDeploy.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="vivisysApp.resourceDeploy.name">Name</span></dt>
+        <dd>
+            <span>{{vm.resourceDeploy.name}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.resourceDeploy.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{vm.resourceDeploy.quantity}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.resourceDeploy.price">Price</span></dt>
+        <dd>
+            <span>{{vm.resourceDeploy.price}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.resourceDeploy.createdTime">Created Time</span></dt>
+        <dd>
+            <span>{{vm.resourceDeploy.createdTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.resourceDeploy.effictiveTime">Effictive Time</span></dt>
+        <dd>
+            <span>{{vm.resourceDeploy.effictiveTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.resourceDeploy.expriedTime">Expried Time</span></dt>
+        <dd>
+            <span>{{vm.resourceDeploy.expriedTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.resourceDeploy.type">Type</span></dt>
+        <dd>
+            <span>{{vm.resourceDeploy.type}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.resourceDeploy.status">Status</span></dt>
+        <dd>
+            <span>{{vm.resourceDeploy.status}}</span>
+        </dd>
+        <dt><span data-translate="vivisysApp.resourceDeploy.resource">Resource</span></dt>
+        <dd>
+            <a ui-sref="resource-vivi-detail({id:vm.resourceDeploy.resourceId})">{{vm.resourceDeploy.resourceName}}</a>
+        </dd>
+        <dt><span data-translate="vivisysApp.resourceDeploy.ord">Ord</span></dt>
+        <dd>
+            <a ui-sref="ord-vivi-detail({id:vm.resourceDeploy.ordId})">{{vm.resourceDeploy.ordName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="resource-deploy-vivi-detail.edit({id:vm.resourceDeploy.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

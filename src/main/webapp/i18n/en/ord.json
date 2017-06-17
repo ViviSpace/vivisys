@@ -1,0 +1,35 @@
+{
+    "vivisysApp": {
+        "ord" : {
+            "home": {
+                "title": "Ords",
+                "createLabel": "Create a new Ord",
+                "createOrEditLabel": "Create or edit a Ord",
+                "search": "Search for Ord"
+            },
+            "created": "A new Ord is created with identifier {{ param }}",
+            "updated": "A Ord is updated with identifier {{ param }}",
+            "deleted": "A Ord is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ord {{ id }}?"
+            },
+            "detail": {
+                "title": "Ord"
+            },
+            "name": "Name",
+            "quantity": "Quantity",
+            "price": "Price",
+            "createdTime": "Created Time",
+            "effictiveTime": "Effictive Time",
+            "expriedTime": "Expried Time",
+            "type": "Type",
+            "status": "Status",
+            "resourceDeploy": "Resource Deploy",
+            "spDeploy": "Sp Deploy",
+            "serv": "Serv",
+            "agent": "Agent",
+            "serviceProvider": "Service Provider",
+            "customer": "Customer"
+        }
+    }
+}

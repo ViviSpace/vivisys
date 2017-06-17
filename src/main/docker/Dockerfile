@@ -5,7 +5,7 @@ ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \
     JAVA_OPTS=""
 
 # add directly the war
-ADD *.war /vivisys-0.0.1-SNAPSHOT.war
+ADD *.war /app.war
 
 EXPOSE 8080
 CMD echo "The application will start in ${JHIPSTER_SLEEP}s..." && \

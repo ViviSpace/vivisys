@@ -16,6 +16,7 @@
             "detail": {
                 "title": "Problem"
             },
+            "name": "Name",
             "problemOrder": "Problem Order",
             "customer": "Customer",
             "ord": "Ord"

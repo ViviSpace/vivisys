@@ -13,6 +13,8 @@ public class ProblemOrderDTO implements Serializable {
 
     private Long id;
 
+    private String name;
+
     private Long problemId;
 
     private String problemName;
@@ -23,6 +25,14 @@ public class ProblemOrderDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getProblemId() {
@@ -66,6 +76,7 @@ public class ProblemOrderDTO implements Serializable {
     public String toString() {
         return "ProblemOrderDTO{" +
             "id=" + getId() +
+            ", name='" + getName() + "'" +
             "}";
     }
 }

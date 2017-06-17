@@ -41,6 +41,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = VivisysApp.class)
 public class ProblemResourceIntTest {
 
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
+
     @Autowired
     private ProblemRepository problemRepository;
 
@@ -86,7 +89,8 @@ public class ProblemResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Problem createEntity(EntityManager em) {
-        Problem problem = new Problem();
+        Problem problem = new Problem()
+            .name(DEFAULT_NAME);
         return problem;
     }
 
@@ -112,6 +116,7 @@ public class ProblemResourceIntTest {
         List<Problem> problemList = problemRepository.findAll();
         assertThat(problemList).hasSize(databaseSizeBeforeCreate + 1);
         Problem testProblem = problemList.get(problemList.size() - 1);
+        assertThat(testProblem.getName()).isEqualTo(DEFAULT_NAME);
 
         // Validate the Problem in Elasticsearch
         Problem problemEs = problemSearchRepository.findOne(testProblem.getId());
@@ -148,7 +153,8 @@ public class ProblemResourceIntTest {
         restProblemMockMvc.perform(get("/api/problems?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(problem.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(problem.getId().intValue())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
 
     @Test
@@ -161,7 +167,8 @@ public class ProblemResourceIntTest {
         restProblemMockMvc.perform(get("/api/problems/{id}", problem.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(problem.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(problem.getId().intValue()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
     }
 
     @Test
@@ -182,6 +189,8 @@ public class ProblemResourceIntTest {
 
         // Update the problem
         Problem updatedProblem = problemRepository.findOne(problem.getId());
+        updatedProblem
+            .name(UPDATED_NAME);
         ProblemDTO problemDTO = problemMapper.toDto(updatedProblem);
 
         restProblemMockMvc.perform(put("/api/problems")
@@ -193,6 +202,7 @@ public class ProblemResourceIntTest {
         List<Problem> problemList = problemRepository.findAll();
         assertThat(problemList).hasSize(databaseSizeBeforeUpdate);
         Problem testProblem = problemList.get(problemList.size() - 1);
+        assertThat(testProblem.getName()).isEqualTo(UPDATED_NAME);
 
         // Validate the Problem in Elasticsearch
         Problem problemEs = problemSearchRepository.findOne(testProblem.getId());
@@ -251,7 +261,8 @@ public class ProblemResourceIntTest {
         restProblemMockMvc.perform(get("/api/_search/problems?query=id:" + problem.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(problem.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(problem.getId().intValue())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
 
     @Test

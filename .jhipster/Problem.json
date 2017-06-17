@@ -20,7 +20,12 @@
             "otherEntityField": "name"
         }
     ],
-    "fields": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
     "changelogDate": "20170617133940",
     "entityTableName": "problem",
     "dto": "mapstruct",

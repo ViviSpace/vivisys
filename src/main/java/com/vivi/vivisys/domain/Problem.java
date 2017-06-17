@@ -26,6 +26,9 @@ public class Problem implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToMany(mappedBy = "problem")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -43,6 +46,19 @@ public class Problem implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Problem name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Set<ProblemOrder> getProblemOrders() {
@@ -120,6 +136,7 @@ public class Problem implements Serializable {
     public String toString() {
         return "Problem{" +
             "id=" + getId() +
+            ", name='" + getName() + "'" +
             "}";
     }
 }

@@ -23,6 +23,9 @@ public class ProblemOrder implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @ManyToOne
     private Problem problem;
 
@@ -32,6 +35,19 @@ public class ProblemOrder implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ProblemOrder name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Problem getProblem() {
@@ -71,6 +87,7 @@ public class ProblemOrder implements Serializable {
     public String toString() {
         return "ProblemOrder{" +
             "id=" + getId() +
+            ", name='" + getName() + "'" +
             "}";
     }
 }

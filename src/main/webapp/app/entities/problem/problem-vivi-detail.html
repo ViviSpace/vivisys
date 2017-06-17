@@ -4,6 +4,10 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="vivisysApp.problem.name">Name</span></dt>
+        <dd>
+            <span>{{vm.problem.name}}</span>
+        </dd>
         <dt><span data-translate="vivisysApp.problem.customer">Customer</span></dt>
         <dd>
             <a ui-sref="customer-vivi-detail({id:vm.problem.customerId})">{{vm.problem.customerName}}</a>

@@ -41,6 +41,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = VivisysApp.class)
 public class ProblemOrderResourceIntTest {
 
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
+
     @Autowired
     private ProblemOrderRepository problemOrderRepository;
 
@@ -86,7 +89,8 @@ public class ProblemOrderResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static ProblemOrder createEntity(EntityManager em) {
-        ProblemOrder problemOrder = new ProblemOrder();
+        ProblemOrder problemOrder = new ProblemOrder()
+            .name(DEFAULT_NAME);
         return problemOrder;
     }
 
@@ -112,6 +116,7 @@ public class ProblemOrderResourceIntTest {
         List<ProblemOrder> problemOrderList = problemOrderRepository.findAll();
         assertThat(problemOrderList).hasSize(databaseSizeBeforeCreate + 1);
         ProblemOrder testProblemOrder = problemOrderList.get(problemOrderList.size() - 1);
+        assertThat(testProblemOrder.getName()).isEqualTo(DEFAULT_NAME);
 
         // Validate the ProblemOrder in Elasticsearch
         ProblemOrder problemOrderEs = problemOrderSearchRepository.findOne(testProblemOrder.getId());
@@ -148,7 +153,8 @@ public class ProblemOrderResourceIntTest {
         restProblemOrderMockMvc.perform(get("/api/problem-orders?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(problemOrder.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(problemOrder.getId().intValue())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
 
     @Test
@@ -161,7 +167,8 @@ public class ProblemOrderResourceIntTest {
         restProblemOrderMockMvc.perform(get("/api/problem-orders/{id}", problemOrder.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(problemOrder.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(problemOrder.getId().intValue()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
     }
 
     @Test
@@ -182,6 +189,8 @@ public class ProblemOrderResourceIntTest {
 
         // Update the problemOrder
         ProblemOrder updatedProblemOrder = problemOrderRepository.findOne(problemOrder.getId());
+        updatedProblemOrder
+            .name(UPDATED_NAME);
         ProblemOrderDTO problemOrderDTO = problemOrderMapper.toDto(updatedProblemOrder);
 
         restProblemOrderMockMvc.perform(put("/api/problem-orders")
@@ -193,6 +202,7 @@ public class ProblemOrderResourceIntTest {
         List<ProblemOrder> problemOrderList = problemOrderRepository.findAll();
         assertThat(problemOrderList).hasSize(databaseSizeBeforeUpdate);
         ProblemOrder testProblemOrder = problemOrderList.get(problemOrderList.size() - 1);
+        assertThat(testProblemOrder.getName()).isEqualTo(UPDATED_NAME);
 
         // Validate the ProblemOrder in Elasticsearch
         ProblemOrder problemOrderEs = problemOrderSearchRepository.findOne(testProblemOrder.getId());
@@ -251,7 +261,8 @@ public class ProblemOrderResourceIntTest {
         restProblemOrderMockMvc.perform(get("/api/_search/problem-orders?query=id:" + problemOrder.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(problemOrder.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(problemOrder.getId().intValue())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
 
     @Test

@@ -72,8 +72,12 @@ entity CustomerIncome{}
 entity AgentCost{}
 entity ResourceCost{}
 entity SpCost{}
-entity Problem{}
-entity ProblemOrder{}
+entity Problem{
+	name String
+}
+entity ProblemOrder{
+	name String
+}
 
 relationship ManyToOne{
 	Serv{product(name)} to Product,

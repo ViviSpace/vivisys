@@ -36,6 +36,7 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="vivisysApp.problem.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="customerName"><span data-translate="vivisysApp.problem.customer">Customer</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="ordName"><span data-translate="vivisysApp.problem.ord">Ord</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -44,6 +45,7 @@
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
                 <tr ng-repeat="problem in vm.problems track by problem.id">
                     <td><a ui-sref="problem-vivi-detail({id:problem.id})">{{problem.id}}</a></td>
+                    <td>{{problem.name}}</td>
                     <td>
                         <a ui-sref="customer-vivi-detail({id:problem.customerId})">{{problem.customerName}}</a>
                     </td>

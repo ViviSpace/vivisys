@@ -1,0 +1,19 @@
+version: '2'
+services:
+    vivisys-app:
+        image: vivisys
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://vivisys-mysql:3306/vivisys?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=vivisys-elasticsearch:9300
+        ports:
+            - 8080:8080
+    vivisys-mysql:
+        extends:
+            file: mysql.yml
+            service: vivisys-mysql
+    vivisys-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: vivisys-elasticsearch
